@@ -1,2 +1,2 @@
-# boring-times-website
-A Blog Site for the Boring Times Youtube channel.
+# About Me
+Student learns code for better world
