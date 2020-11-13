@@ -1,0 +1,84 @@
+@font-face {
+  font-family: Poppins;
+  src: url(../fonts/Poppins-SemiBold.ttf);
+}
+@font-face {
+  font-family: Quicksans;
+  src: url(../fonts/Quicksand-SemiBold.ttf);
+}
+@font-face {
+  font-family: "Product Sans";
+  src: url(../fonts/ProductSans.ttf);
+}
+body {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Poppins;
+}
+
+header {
+  background-color: #8d05b5;
+  padding: 10px 8px;
+}
+
+ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 0;
+  padding: 0;
+  -ms-flex-pack: distribute;
+  justify-content: space-around;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+ul li {
+  list-style: none;
+  font-weight: 600;
+  font-size: 1.5rem;
+  color: white;
+  -ms-flex-line-pack: center;
+  align-content: center;
+}
+
+ul li .current {
+  color: #ff35cd;
+}
+
+ul li a {
+  text-decoration: none;
+  color: white;
+  font-family: "Poppins";
+}
+
+main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: #f1f1f1;
+  font-weight: 400;
+  font-family: Quicksand;
+  -ms-flex-pack: distribute;
+  justify-content: space-around;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+main p {
+  font-size: 1.5rem;
+}
+
+main p span {
+  background-color: #ff35cd;
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 800;
+  padding: 0 5px;
+  text-transform: uppercase;
+}
+/*# sourceMappingURL=about.css.map */

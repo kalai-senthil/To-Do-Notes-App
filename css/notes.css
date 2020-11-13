@@ -1,0 +1,537 @@
+@font-face {
+  font-family: Poppins;
+  src: url(../fonts/Poppins-SemiBold.ttf);
+}
+@font-face {
+  font-family: Quicksans;
+  src: url(../fonts/Quicksand-SemiBold.ttf);
+}
+@font-face {
+  font-family: "Product Sans";
+  src: url(../fonts/ProductSans.ttf);
+}
+body {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Poppins;
+}
+
+.adding-note-form,
+.edit-before {
+  -webkit-animation: turnOff 600ms cubic-bezier(0.23, 1, 0.32, 1);
+  animation: turnOff 600ms cubic-bezier(0.23, 1, 0.32, 1);
+  width: 100%;
+  left: 250px;
+  top: 240px;
+  bottom: 0;
+  -webkit-transform: scale(0);
+  transform: scale(0);
+  z-index: 2550;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: fixed;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  height: 100%;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.adding-note-form .section,
+.edit-before .section {
+  background-color: #e2e2e2;
+  padding: 10px 25px;
+  border-radius: 10px;
+  width: 450px;
+}
+
+.adding-note-form .section h1,
+.edit-before .section h1 {
+  font-size: 1rem;
+  margin: 0;
+}
+
+.adding-note-form .section .head,
+.edit-before .section .head {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.adding-note-form .section #notes-title,
+.adding-note-form .section #notes-des,
+.adding-note-form .section #edit-title,
+.adding-note-form .section #edit-des,
+.edit-before .section #notes-title,
+.edit-before .section #notes-des,
+.edit-before .section #edit-title,
+.edit-before .section #edit-des {
+  width: 100%;
+  font-size: 1rem;
+  resize: none;
+  outline: none;
+  font-family: "Product Sans";
+  background-color: transparent;
+  border: none;
+}
+
+.adding-note-form .section #notes-title,
+.adding-note-form .section #edit-title,
+.edit-before .section #notes-title,
+.edit-before .section #edit-title {
+  font-size: 1.2rem;
+  border-bottom: 2px solid #8d05b5;
+}
+
+.adding-note-form .section #notes-title,
+.adding-note-form .section #notes-des:focus,
+.edit-before .section #notes-title,
+.edit-before .section #notes-des:focus {
+  background-color: transparent;
+}
+
+.adding-note-form .section .actions-notes,
+.edit-before .section .actions-notes {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.adding-note-form .section .actions-notes .save-btn,
+.adding-note-form .section .actions-notes .cancel-btn,
+.edit-before .section .actions-notes .save-btn,
+.edit-before .section .actions-notes .cancel-btn {
+  background-color: #8d05b5;
+  color: white;
+  font-family: Poppins;
+  font-weight: 600;
+  padding: 0.4em 1.5em;
+  border-radius: 45px;
+  cursor: pointer;
+}
+
+.adding-note-form .section .actions-notes .cancel-btn,
+.edit-before .section .actions-notes .cancel-btn {
+  background-color: #ffffff;
+  color: #8d05b5;
+}
+
+.edit-before {
+  -webkit-animation: editOff 600ms cubic-bezier(0, 0, 0.06, 1.24);
+  animation: editOff 600ms cubic-bezier(0, 0, 0.06, 1.24);
+  opacity: 0;
+  left: 0;
+  top: 0;
+  -webkit-transform: scale(0);
+  transform: scale(0);
+}
+
+@-webkit-keyframes editOff {
+  from {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    left: 0;
+    top: 0;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
+}
+
+@keyframes editOff {
+  from {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    left: 0;
+    top: 0;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
+}
+
+.edit-note {
+  -webkit-animation: editOn 600ms cubic-bezier(0, 0, 0.06, 1.24);
+  animation: editOn 600ms cubic-bezier(0, 0, 0.06, 1.24);
+  opacity: 1;
+  left: 0;
+  top: 0;
+  -webkit-transform: scale(1);
+  transform: scale(1);
+}
+
+@-webkit-keyframes editOn {
+  from {
+    opacity: 0;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
+  to {
+    opacity: 1;
+    left: 0;
+    top: 0;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+
+@keyframes editOn {
+  from {
+    opacity: 0;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
+  to {
+    opacity: 1;
+    left: 0;
+    top: 0;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+
+.form-input {
+  -webkit-animation: turnOn 600ms cubic-bezier(0, 0, 0.06, 1.24) !important;
+  animation: turnOn 600ms cubic-bezier(0, 0, 0.06, 1.24) !important;
+  opacity: 1;
+  left: 0;
+  top: 0;
+  z-index: 2550;
+  -webkit-transform: scale(1);
+  transform: scale(1);
+}
+
+@-webkit-keyframes turnOn {
+  from {
+    opacity: 0;
+    left: 600px;
+    top: 240px;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
+  to {
+    opacity: 1;
+    left: 0;
+    top: 0;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+
+@keyframes turnOn {
+  from {
+    opacity: 0;
+    left: 600px;
+    top: 240px;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
+  to {
+    opacity: 1;
+    left: 0;
+    top: 0;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+
+@-webkit-keyframes turnOff {
+  from {
+    opacity: 1;
+    left: 0;
+    top: 0;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    left: 600px;
+    top: 240px;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
+}
+
+@keyframes turnOff {
+  from {
+    opacity: 1;
+    left: 0;
+    top: 0;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    left: 600px;
+    top: 240px;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
+}
+
+header {
+  background-color: #8d05b5;
+  padding: 10px 8px;
+}
+
+ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 0;
+  padding: 0;
+  -ms-flex-pack: distribute;
+  justify-content: space-around;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+ul li {
+  list-style: none;
+  font-weight: 600;
+  font-size: 1.5rem;
+  color: white;
+  -ms-flex-line-pack: center;
+  align-content: center;
+}
+
+ul li .current {
+  color: #ff35cd;
+}
+
+ul li a {
+  text-decoration: none;
+  color: white;
+  font-family: "Poppins";
+}
+
+button:focus {
+  outline: none;
+}
+
+button {
+  position: fixed;
+  right: 25px;
+  bottom: 25px;
+  background-color: white;
+  padding: 1em;
+  color: #8d05b5;
+  -webkit-box-shadow: 0px 5px 6px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 5px 6px rgba(0, 0, 0, 0.3);
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+}
+
+button .add {
+  -webkit-animation: rotOff 600ms cubic-bezier(0.25, 0.1, 0.05, 1.63);
+  animation: rotOff 600ms cubic-bezier(0.25, 0.1, 0.05, 1.63);
+  -webkit-transform: rotate(0deg);
+  transform: rotate(0deg);
+}
+
+button .add-animation {
+  -webkit-animation: rotOn 600ms cubic-bezier(0.25, 0.1, 0.05, 1.63);
+  animation: rotOn 600ms cubic-bezier(0.25, 0.1, 0.05, 1.63);
+  -webkit-transform: rotate(225deg);
+  transform: rotate(225deg);
+}
+
+@-webkit-keyframes rotOn {
+  from {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(225deg);
+    transform: rotate(225deg);
+  }
+}
+
+@keyframes rotOn {
+  from {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(225deg);
+    transform: rotate(225deg);
+  }
+}
+
+@-webkit-keyframes rotOff {
+  from {
+    -webkit-transform: rotate(265deg);
+    transform: rotate(265deg);
+  }
+  to {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes rotOff {
+  from {
+    -webkit-transform: rotate(265deg);
+    transform: rotate(265deg);
+  }
+  to {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+}
+
+.rotSimul {
+  -webkit-animation: rotsim 1s ease;
+  animation: rotsim 1s ease;
+}
+
+.des-text {
+  font-size: 1.2rem;
+  color: #8d05b5;
+  font-weight: 600;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 0.2em 1em 0.2em 0.5em;
+  border-left: 5px solid #8d05b5;
+  -webkit-box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+main {
+  max-width: 80%;
+  width: 80%;
+  margin: 0 auto;
+}
+
+main .whole {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (minmax(500px, 1fr)) [auto-fit];
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  -webkit-box-pack: stretch;
+  -ms-flex-pack: stretch;
+  justify-content: stretch;
+  grid-gap: 20px 10px;
+}
+
+main .whole .notes {
+  -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4);
+  border-radius: 10px;
+  height: 250px;
+  -webkit-transition: all 600ms cubic-bezier(0.23, 1, 0.32, 1);
+  transition: all 600ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+main .whole .notes .notes-head-section {
+  padding: 5px 8px;
+  max-width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: #8d05b5;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+main .whole .notes .notes-head-section .edit {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  max-width: -webkit-fit-content;
+  max-width: -moz-fit-content;
+  max-width: fit-content;
+}
+
+main .whole .notes .notes-head-section .heading {
+  max-width: 85%;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 5px 0;
+  font-family: "Product Sans";
+  color: white;
+  font-weight: 600;
+}
+
+main .whole .notes-des {
+  padding: 3px 8px 10px 8px;
+  font-weight: 500;
+  max-width: 100%;
+  max-height: 190px;
+  overflow-y: auto;
+  overflow-wrap: break-word;
+}
+
+.notes:hover {
+  -webkit-transform: translateY(-5px);
+  transform: translateY(-5px);
+  -webkit-box-shadow: 0 9px 15px rgba(0, 0, 0, 0.8);
+  box-shadow: 0 9px 15px rgba(0, 0, 0, 0.8);
+}
+
+@media screen and (min-width: 320px) and (max-width: 375px) {
+  main .whole {
+    -ms-grid-columns: (minmax(250px, 1fr)) [auto-fit];
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+}
+
+@media screen and (min-width: 376px) and (max-width: 425px) {
+  main .whole {
+    -ms-grid-columns: (minmax(250px, 1fr)) [auto-fit];
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+}
+
+@media screen and (min-width: 425px) and (max-width: 768px) {
+  main .whole {
+    -ms-grid-columns: (minmax(250px, 1fr)) [auto-fit];
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  main .whole {
+    -ms-grid-columns: (minmax(300px, 1fr)) [auto-fit];
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+}
+/*# sourceMappingURL=notes.css.map */

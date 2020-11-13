@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" ng-app = "toDoApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.2/angular.js" integrity="sha512-rCVQBDU9Ny0aKLo1/B1MqgRjWEMlCL3WJ0DD6mJeK6qMZqpN9JCRxPtMQWWR9XWCMFIqlSgT4uOdwpvxWTSejw==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.2/angular.min.js" integrity="sha512-7oYXeK0OxTFxndh0erL8FsjGvrl2VMDor6fVqzlLGfwOQQqTbYsGPv4ZZ15QHfSk80doyaM0ZJdvkyDcVO7KFA==" crossorigin="anonymous"></script>
+    <script src="./js/to-do.js"></script>
+    <link rel="stylesheet" href="./css/to-do.css">
+    <title>To Do</title>
+</head>
+<body ng-controller = "maintaintoDo">
+    <div class="user-name us-last">
+        <div class="section">
+            <div ng-click = "inputForm()" >
+                <p id="username-place">Your Name</p>
+                <form id="usernameform">
+                <input type="text" id="username" ng-keydown = "checkNameadd($event)"></form>
+            </div>
+        <button ng-click = "nameSaving()">OK</button></div>
+    </div>
+    <header>
+        <nav>
+            <ul>
+                <li><a class="current" href="index.html">To Do's</a></li>
+                <li><a href="./sections/notes.html">Notes</a></li>
+                <li><a href="./sections/about.html">About</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="des-text">
+        <p>Better Way To Organize Your Task</p>
+    </div>
+    <div class="user" style="text-align: center;color: #ff09de;"><h1>Welcome Back,{{userName}}</h1></div>
+    <div class="noti">
+        <p>{{ notiMsg }}</p>
+    </div>
+    <main>
+        <form id ="tasks-add">
+            <input id ="tasks" type="text" placeholder="Notes here..." ng-keydown = "checkadd($event)"><span ng-click = "add()" >Add</span></form>
+       <div class="flex-whole"> <div class="flex-change">
+            <div class="pending-tasks-container">
+            <p>Pending Tasks :</p>
+            <h1 ng-show = "presentNone">None</h1>
+            <div class="pending-tasks">
+            <div class="tasks" ng-repeat = "x in lists">
+                <label ng-click = "check($index)">
+                    <input type="checkbox"><p>{{x}}</p>
+                </label>
+                <p class="dismiss" ng-click = "deletePenTask($index)"><svg style="cursor: pointer;" xmlns="http://www.w3.org/2000/svg" width="12.728" height="12.728" viewBox="0 0 12.728 12.728">
+                    <g id="Dismiss" transform="translate(-320.136 -126.136)">
+                      <path id="Path_7" data-name="Path 7" d="M0,0V16" transform="translate(332.157 126.843) rotate(45)" fill="none" stroke="#707070" stroke-width="2"/>
+                      <path id="Path_8" data-name="Path 8" d="M0,0V16" transform="translate(332.157 138.157) rotate(135)" fill="none" stroke="#707070" stroke-width="2"/>
+                    </g>
+                  </svg>
+                  </p>
+            </div></div>
+        </div></div>
+        <div class="flex-change">
+        <div class="finished-tasks-container">
+            <p>Finished Tasks :</p>
+            <h1 ng-show = "finishedValueNone">None</h1>
+            <div class="finished-tasks">
+            <div class="tasks" ng-repeat = "rem in remlists">
+                <label>
+                    <input type="checkbox" disabled><p>{{rem}}</p>
+                </label>
+                <p ng-click = "finDel($index)"><svg style="cursor: pointer;" xmlns="http://www.w3.org/2000/svg" width="12.728" height="12.728" viewBox="0 0 12.728 12.728">
+                    <g id="Dismiss" transform="translate(-320.136 -126.136)">
+                      <path id="Path_7" data-name="Path 7" d="M0,0V16" transform="translate(332.157 126.843) rotate(45)" fill="none" stroke="#707070" stroke-width="2"/>
+                      <path id="Path_8" data-name="Path 8" d="M0,0V16" transform="translate(332.157 138.157) rotate(135)" fill="none" stroke="#707070" stroke-width="2"/>
+                    </g>
+                  </svg>
+                  </p>
+            </div>
+        </div></div>
+        <div class="delete">
+        <button ng-click = "deleteAllFin()">Delete All</button></div></div></div>
+</body>
+</html>
