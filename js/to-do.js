@@ -1,7 +1,6 @@
 var toDoApp = angular.module("toDoApp",[])
 toDoApp.controller("maintaintoDo",function($scope)
 {
-    /*************To Do's Section***************/
     $scope.lists = [];
     $scope.remlists = [];
     $scope.userName = " "+ "User"
@@ -21,7 +20,6 @@ toDoApp.controller("maintaintoDo",function($scope)
     }
     $scope.nameSaving = ()=>{
         $scope.userName = " " + username.value;
-        console.log($scope.userName)
         inputSection.removeClass("user-name");
         usernameform.reset();
     }
@@ -43,32 +41,20 @@ toDoApp.controller("maintaintoDo",function($scope)
         $scope.lists.splice(i,1);
         checkNull();
         checkNullFinished();
-        $scope.notiMsg = "Task Deleted"
-                notification.addClass("noti-hide");
-                setInterval(()=>{
-                    notification.removeClass("noti-hide");
-                },2500);
+ alert("Task Deleted")
 
     }
     $scope.deleteAllFin = ()=>{
         $scope.remlists = [];
         checkNull();
         checkNullFinished();
-        $scope.notiMsg = "All Tasks Deleted"
-                notification.addClass("noti-hide");
-                setInterval(()=>{
-                    notification.removeClass("noti-hide");
-                },2500);
+alert("All Tasks Deleted")
     }
     $scope.finDel = (inDEX) =>{
         $scope.remlists.splice(inDEX,1);
         checkNull();
         checkNullFinished();
-        $scope.notiMsg = "Task Deleted"
-        notification.addClass("noti-hide");
-        setInterval(()=>{
-            notification.removeClass("noti-hide");
-        },2500);
+alert("Task Deleted")
     }
     $scope.check = function(ch)
     {
@@ -85,7 +71,7 @@ toDoApp.controller("maintaintoDo",function($scope)
     }
     $scope.add = function (){
         let tasks = document.getElementById("tasks").value;
-        let empty = tasks === " ";
+        let empty = tasks === "";
         let present = false;
         for(let i = 0;i < $scope.lists.length;i++){
             if(tasks === $scope.lists[i])
@@ -102,28 +88,12 @@ toDoApp.controller("maintaintoDo",function($scope)
                 document.getElementById("tasks-add").reset();
                 checkNull();
                 checkNullFinished();
-                $scope.notiMsg = "Task Added"
-                notification.addClass("noti-hide");
-                setInterval(()=>{
-                    notification.removeClass("noti-hide");
-                },2500);
             }
             else
-            {
-                $scope.notiMsg = "Task Already Added"
-                notification.addClass("noti-hide");
-                setInterval(()=>{
-                    notification.removeClass("noti-hide");
-                },2500);
-            }  
+        alert("Task Already Added");
         }
         else
-        {
-            $scope.notiMsg = "Task is Empty"
-                notification.addClass("noti-hide");
-                setInterval(()=>{
-                    notification.removeClass("noti-hide");
-                },2500);
-        }
+        alert("Task is Empty");
+        
     }
 })
