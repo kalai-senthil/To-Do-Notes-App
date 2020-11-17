@@ -1,0 +1,92 @@
+<html lang="en" ng-app = "notesApp">
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.2/angular.js" integrity="sha512-rCVQBDU9Ny0aKLo1/B1MqgRjWEMlCL3WJ0DD6mJeK6qMZqpN9JCRxPtMQWWR9XWCMFIqlSgT4uOdwpvxWTSejw==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.2/angular.min.js" integrity="sha512-7oYXeK0OxTFxndh0erL8FsjGvrl2VMDor6fVqzlLGfwOQQqTbYsGPv4ZZ15QHfSk80doyaM0ZJdvkyDcVO7KFA==" crossorigin="anonymous"></script>
+    <script src="./js/notes.js"></script>
+    <link rel="stylesheet" href="./css/notes.css">
+    <title>Notes</title>
+</head>
+<body ng-controller = "maintainNotes">
+    <header>
+        <nav>
+            <ul>
+                <li><a href="./index.html">To Do's</a></li>
+                <li><a class="current" href="notes.html">Notes</a></li>
+            </ul>
+        </nav>
+    </header>
+    <form id ="edit-note" class="edit-before">
+      <div class="section">
+        <div class="head"><span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 54 54">
+            <path id="Path_1" data-name="Path 1" d="M0,0H54V54H0Z" fill="rgba(0,0,0,0)"/>
+            <path id="Path_3" data-name="Path 3" d="M3,35.063V43.5h8.437L36.322,18.615l-8.437-8.437ZM9.57,39H7.5V36.93L27.885,16.545l2.07,2.07ZM42.847,8.917,37.582,3.652a2.254,2.254,0,0,0-3.173,0L30.292,7.77l8.438,8.438,4.118-4.117a2.241,2.241,0,0,0,0-3.173Z" transform="translate(3.75 3.75)" fill="#8d05b5"/>
+          </svg>
+       </span><h1 style="font-weight: 600;color: #8d05b5;margin-left: 5px;">Edit Note</h1></div>
+      <div class="edit-title">
+        <h1>Title :</h1>
+        <input type="text" id="edit-title">
+      </div>
+      <div class="edit-des">
+        <h1>Description :</h1>
+        <textarea id="edit-des" cols="35" rows="10"></textarea>
+      </div><div class="actions-notes"><span ng-click = "replaceCancelButton()" class="cancel-btn">CANCEL</span><span ng-click = "replaceButton()" class="save-btn">REPLACE</sapn></div></div>
+    </form>
+    <form id= "add-note-form" class="adding-note-form">
+      <div class="section">
+        <div class="head">
+          <span><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 59 59">
+            <g  transform="translate(-1510 -1260)">
+              <rect data-name="Rectangle 20" width="9" height="59" rx="4.5" transform="translate(1535 1260)" fill=" #8d05b5"/>
+              <rect data-name="Rectangle 21" width="9" height="59" rx="4.5" transform="translate(1569 1285) rotate(90)" fill=" #8d05b5"/>
+            </g>
+          </svg></span>
+        <h1 style="font-weight: 600;color: #8d05b5;margin-left: 5px;">Add Note</h1></div>
+      <div class="title-add">
+        <h1>Title :</h1>
+      <input type="text" id="notes-title">
+      </div>
+      <div class="note-des">
+      <h1>Description :</h1>
+      <textarea id="notes-des" rows="10" cols="35"></textarea></div> <div class="actions-notes"><span class="cancel-btn" ng-click = "noteSaveCancel()">CANCEL</span><span class="save-btn" ng-click = "noteSave()">SAVE</sapn></div></div>
+     </form>
+    <button style="z-index: 10523;" class="rotSimul" ng-click = "addSimu()">
+      <svg class="Add" xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 59 59">
+        <g  transform="translate(-1510 -1260)">
+          <rect data-name="Rectangle 20" width="9" height="59" rx="4.5" transform="translate(1535 1260)" fill="#8d05b5"/>
+          <rect data-name="Rectangle 21" width="9" height="59" rx="4.5" transform="translate(1569 1285) rotate(90)" fill="#8d05b5"/>
+        </g>
+      </svg>
+      </button>
+    <p class="des-text">Notes Added : {{totalNotes}}</p>
+    <main>
+        <div class="whole">
+        <div class="notes" ng-repeat = "note in notes">
+            <div class="notes-head-section">
+            <p class="heading">{{note["Title"]}}</p>
+            <div class="edit">
+               <span style="margin-right: 10px;cursor:pointer;" ng-click = editNotes($index)>
+                  <svg id="edit-notes" xmlns="http://www.w3.org/2000/svg" width="29" height="29" viewBox="0 0 54 54">
+                    <path id="Path_1" data-name="Path 1" d="M0,0H54V54H0Z" fill="rgba(0,0,0,0)"/>
+                    <path id="Path_2" data-name="Path 2" d="M5,29.4v2.07H7.07L27.455,11.09l-2.07-2.07Z" transform="translate(6.25 11.275)" opacity="0.3"/>
+                    <path id="Path_3" data-name="Path 3" d="M3,35.063V43.5h8.437L36.322,18.615l-8.437-8.437ZM9.57,39H7.5V36.93L27.885,16.545l2.07,2.07ZM42.847,8.917,37.582,3.652a2.254,2.254,0,0,0-3.173,0L30.292,7.77l8.438,8.438,4.118-4.117a2.241,2.241,0,0,0,0-3.173Z" transform="translate(3.75 3.75)" fill="#fff"/>
+                  </svg>
+               </span>
+              <span style="cursor:pointer;" ng-click = "noteDelete($index)"><svg id="delete-notes" xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 50 50">
+                <path id="Path_4" data-name="Path 4" d="M0,0H50V50H0Z" fill="none"/>
+                <path id="Path_6" data-name="Path 6" d="M26.875,5.083,24.792,3H14.375L12.292,5.083H5V9.25H34.167V5.083ZM7.083,36.333A4.179,4.179,0,0,0,11.25,40.5H27.917a4.179,4.179,0,0,0,4.167-4.167v-25h-25ZM11.25,15.5H27.917V36.333H11.25Z" transform="translate(5.417 3.25)" fill="#fff"/>
+              </svg>
+               </span>
+            </div></div>
+            <div class="notes-des">
+               <span>{{note["Des"]}}</span>
+            </div>
+        </div>
+    </div>
+    </main>
+   </body>
+</body>
+</html>
